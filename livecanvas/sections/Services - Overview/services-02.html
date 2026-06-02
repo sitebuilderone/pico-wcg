@@ -1,0 +1,48 @@
+<section id="services-02">
+	<div class="container py-6 py-lg-8">
+		<div class="row">
+			<div class="col-lg-5 mb-4 mb-lg-0">
+				<div class="lc-block">
+					<div editable="rich">
+						<h2 class="display-5 fw-bold">
+							<tangible class="live-refresh">[sbo_field name="one_services_title"]</tangible>
+						</h2>
+					</div>
+					<div>
+						<tangible class="live-refresh">
+							<p class="lead">[sbo_field name="one_services_overview"]</p>
+						</tangible>
+					</div>
+				</div>
+			</div>
+			<div class="lc-block col-lg-7">
+				<tangible class="live-refresh">
+					<div class="d-flex flex-column flex-lg-column-reverse gap-3">
+						<loop class="row g-3 mb-4" type="service" paged="4" orderby="menu_order" order="asc">
+							<div class="col-md-6 mb-5 mb-md-4 position-relative align-content-start">
+								<div class="row g-3">
+									<div class="col-12">
+										<if field="image">
+											<img loading="lazy" src="{Field image_url size='large'}" srcset="{Field image_srcset}" sizes="{Field image_sizes}" class="img-fluid w-100 object-fit-cover rounded" style="aspect-ratio:4/3" alt="{Field image_alt}">
+											<else>
+												<img loading="lazy" src="https://placehold.co/400x300" class="img-fluid w-100 object-fit-cover rounded" style="aspect-ratio:4/3" alt="Placeholder">
+											</else>
+										</if>
+									</div>
+									<div class="col-12">
+										<div>
+											<h3 class="fw-bold"><a href="{Field url}" class="stretched-link">
+													<field name="title"></field>
+												</a></h3>
+											<field name="excerpt" words="120" auto="true"></field>
+										</div>
+									</div>
+								</div>
+							</div>
+						</loop>
+					</div>
+				</tangible>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,53 @@
+<section id="services">
+    <div class="container py-6 py-lg-10">
+        <div class="row">
+            <tangible class="live-refresh">
+                <div class="col-12 text-center">
+                    <div class="lc-block mb-lg-5">
+                        <div editable="rich">
+                            <h2 class="display-5 fw-bold">[sbo_field name="one_services_title"]</h2>
+                        </div>
+                        <div>
+                            <p class="lead">[sbo_field name="one_services_overview"]</p>
+                        </div>
+                    </div>
+                </div>
+            </tangible>
+        </div>
+        <div class="lc-block" id="sc-article-loop-xuyo">
+            <tangible class="live-refresh">
+                <loop class="row" paged="3" type="service" orderby="menu-order" order="asc">
+                    <div class="post col-sm-6 col-xl-4 mb-4 mw-4 position-relative">
+                        <div class="ratio ratio-21x9 mb-3">
+                            <if field="image">
+                                <img class="img-fluid rounded object-fit-cover h-100"
+                                    src="{Field image_url size='large'}" alt="{Field image_alt}">
+                                <else><img class="img-fluid rounded object-fit-cover h-100"
+                                        src="https://placehold.co/600x400" alt="Placeholder image"></else>
+                            </if>
+                        </div>
+                        <div>
+                            <h3 class="fw-semibold h5 mb-2">
+                                <field name="title"></field>
+                            </h3>
+                            <p class="text-body text-opacity-75">
+                                <field name="excerpt"></field>
+                            </p>
+                        </div>
+                        <a class="stretched-link" href="{Field url}"></a>
+                    </div>
+                </loop>
+            </tangible>
+            <style>
+                #sc-article-loop-xuyo .post img {
+                    transition: .5s;
+                }
+
+                #sc-article-loop-xuyo .post:hover img {
+                    transform: scale(1.05);
+                    transition: .5s;
+                }
+            </style>
+        </div>
+    </div>
+</section>

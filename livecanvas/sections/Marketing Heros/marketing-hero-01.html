@@ -1,0 +1,35 @@
+<!-- 
+ Marketing hero
+-->
+ <section id="sb1-marketing-hero" class="position-relative overflow-hidden bg-dark text-white">
+	<tangible class="live-reload">
+		<Set name="hero_img">
+			<Shortcode sbo_url name="one_marketing_image"></Shortcode>
+		</Set>
+		<img src="{Get hero_img}" alt="" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-25">
+	</tangible>
+
+	<div class="container position-relative py-5">
+		<div class="row justify-content-center text-center py-lg-5">
+			<div class="col-lg-9">
+				<h1 class="display-3 fw-bold mb-3">
+					<tangible class="live-reload">[sbo_field name="one_headline"]</tangible>
+				</h1>
+
+				<p class="lead mb-4 text-white-50">
+					<tangible class="live-reload">[sbo_field name="one_headline_support"]</tangible>
+				</p>
+
+				<div class="d-flex justify-content-center flex-wrap gap-2">
+					<a href="[sbo_url name=&quot;one_cta_url&quot;]" class="btn btn-primary btn-lg">
+						<tangible class="live-reload">[sbo_field name="one_cta_text"]</tangible>
+					</a>
+
+					<a href="[sbo_url name=&quot;one_cta_url_02&quot;]" class="btn btn-outline-light btn-lg">
+						<tangible class="live-reload">[sbo_field name="one_cta_text_02"]</tangible>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

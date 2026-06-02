@@ -1,0 +1,45 @@
+<!-- Header >> [sbo_website_name] >> Simple Header -->
+<header class="z-fixed" role="banner" itemscope itemtype="https://schema.org/Organization">
+    <!-- Skip to main content for keyboard users -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+    
+    <nav class="navbar navbar-expand-lg navbar-light shadow-lg" role="navigation" aria-label="Main navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <div class="container position-relative">
+            <a class="navbar-brand" href="[lc_home_url]" itemprop="url" aria-label="[sbo_website_name] home">
+                <img src="[sbo_one_business_logo]" 
+                     width="[sbo_one_logo_width]" 
+                     height="[sbo_one_logo_height]" 
+                     alt="[sbo_website_name]" 
+                     class="img-fluid navbar-brand-light"
+                     itemprop="logo">
+                <img src="assets/img/logo/logo-white.svg" 
+                     width="[sbo_one_logo_width]" 
+                     height="[sbo_one_logo_height]"
+                     alt="[sbo_website_name]" 
+                     class="img-fluid navbar-brand-dark"
+                     aria-hidden="true">
+                <meta itemprop="name" content="[sbo_website_name]">
+            </a>
+            <div class="d-flex align-items-center navbar-no-collapse-items order-lg-last">
+                <button class="navbar-toggler order-last" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#mainNavbarTheme" 
+                        aria-controls="mainNavbarTheme" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation menu">
+                    <span class="navbar-toggler-icon"><i></i></span>
+                </button>
+                <div class="nav-item me-3 me-lg-0">
+                    <a href="[lc_home_url]/get-started" class="btn btn-sm btn-primary rounded-pill" aria-label="Get started with [sbo_website_name]">Get Started</a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="mainNavbarTheme">
+                <!--Navbar items-->
+                <div class="ms-auto">
+                    <div lc-helper="shortcode" class="live-shortcode">[lc_nav_menu theme_location="primary" container_class="" container_id="" menu_class="navbar-nav"]</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
