@@ -1,7 +1,62 @@
 <!--
 HTML template within Wordpress LiveCanvas header
 -->
+<div class="lc-header-wcg">
+<style>
+@media (max-width: 991.98px) {
+	.lc-header-wcg .mobile-panel {
+		display: block;
+		transform: translateX(100%);
+	}
+	.lc-header-wcg .mobile-backdrop {
+		display: block;
+		opacity: 0;
+		pointer-events: none;
+	}
+	.lc-header-wcg.nav-open .mobile-panel {
+		transform: translateX(0) !important;
+	}
+	.lc-header-wcg.nav-open .mobile-backdrop {
+		opacity: 1 !important;
+		pointer-events: auto;
+	}
+}
 
+@media (max-width: 575.98px) {
+	.lc-header-wcg .topbar .wcg-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 10px;
+		flex-wrap: nowrap;
+	}
+	.lc-header-wcg .topbar-left,
+	.lc-header-wcg .topbar-right {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		flex-wrap: nowrap;
+	}
+	.lc-header-wcg .topbar-left {
+		min-width: 0;
+		flex: 1 1 auto;
+	}
+	.lc-header-wcg .topbar-dot {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.lc-header-wcg .topbar-sep,
+	.lc-header-wcg .topbar-accred {
+		display: none;
+	}
+	.lc-header-wcg .topbar-right a {
+		white-space: nowrap;
+		font-size: 11px;
+		letter-spacing: .08em;
+	}
+}
+</style>
 <!-- Top announcement bar -->
 <div class="topbar">
 	<div class="wcg-wrap">
@@ -35,32 +90,32 @@ HTML template within Wordpress LiveCanvas header
 								<div class="mega-top">
 									<div>
 										<div class="k">What we do</div>
-										<h3>Ground-source heating &amp; cooling</h3>
+										<div class="mega-panel-title">Ground-source heating &amp; cooling</div>
 									</div>
 									<p>One way of doing the work, sized for every kind of building. Drilled, sealed, and monitored by our own crews.</p>
 								</div>
 								<div class="mega-cards">
 									<a class="mega-col mega-card" href="#">
 										<span class="mega-num">01</span>
-										<h4>Residential</h4>
+										<span class="mega-card-title">Residential</span>
 										<p>Oil &amp; gas replacement, retrofits, and full HVAC packages for single-family homes.</p>
 										<span class="go">Explore →</span>
 									</a>
 									<a class="mega-col mega-card" href="#">
 										<span class="mega-num">02</span>
-										<h4>Strata &amp; Condo</h4>
+										<span class="mega-card-title">Strata &amp; Condo</span>
 										<p>Water-source heat pump swap-outs and building-loop upgrades, suite by suite.</p>
 										<span class="go">Explore →</span>
 									</a>
 									<a class="mega-col mega-card" href="#">
 										<span class="mega-num">03</span>
-										<h4>Commercial</h4>
+										<span class="mega-card-title">Commercial</span>
 										<p>Schools, light-industrial, and multi-unit. Loop fields up to 48 boreholes.</p>
 										<span class="go">Explore →</span>
 									</a>
 									<a class="mega-col mega-card mega-card--all" href="#">
 										<span class="mega-num">04</span>
-										<h4>View all services</h4>
+										<span class="mega-card-title">View all services</span>
 										<p>Every system type, plus retrofits and service &amp; monitoring.</p>
 										<span class="go">All services →</span>
 									</a>
@@ -164,26 +219,5 @@ HTML template within Wordpress LiveCanvas header
 	</div>
 </aside>
 
-<!-- Geothermal Header -->
-<section>
-	<nav class="navbar navbar-expand-lg py-3 navbar-light">
-		<div class="container">
-			<a class="navbar-brand" href="[lc_home_url]">
-				<img src="https://westcoastgeothermal.local/media/west-coast-geothermal-vancouver.png" width="250" class="align-middle me-1 img-fluid wp-image-20749" alt="West Coast Geothermal">
-			</a>
+</div>
 
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar3" aria-controls="myNavbar3" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-
-			<div class="lc-block collapse navbar-collapse" id="myNavbar3">
-				<div lc-helper="shortcode" class="live-shortcode ms-auto">[lc_nav_menu theme_location="primary" container_class="" container_id="" menu_class="navbar-nav"]</div>
-				<div class="lc-block ms-auto d-grid gap-2 d-lg-block">
-
-					<a class="btn btn-primary" href="[lc_home_url]/contact-vancouver/" role="button">Contact</a>
-				</div>
-			</div>
-		</div>
-	</nav>
-</section>

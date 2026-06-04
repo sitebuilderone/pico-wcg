@@ -1,0 +1,237 @@
+:root {
+    --cream:      #F1EAE0;
+    --cream-soft: #EAE1D3;
+    --paper:      #FBF8F2;
+    --ink:        #1B1916;
+    --ink-soft:   #3A332C;
+    --mute:       #7A6F62;
+    --rule:       #D9CFBE;
+    --red:        #B83A2A;
+    --red-soft:   #E66A53;
+    --amber:      #D98A2B;
+    --gold:       #E8B23A;
+
+    --font-sans: "Inter Tight", "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    /* The signature gradient, lifted from the logo: cool surface -> hot core */
+    --hot-deep: linear-gradient(135deg, #B83A2A 0%, #D98A2B 55%, #E8B23A 100%);
+
+    --gutter: clamp(20px, 5vw, 56px);
+    --maxw: 1280px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, h4, p { margin: 0; }
+
+  .wcg-wrap {
+    max-width: var(--maxw);
+    margin-inline: auto;
+
+    width: 100%;
+  }
+  .mono { font-family: var(--font-mono); letter-spacing: 0.14em; }
+
+  /* ======================================================================
+     Footer
+     A light, warm gradient "ground" — cream at the surface fading into a
+     soft gold core, echoing the logo while keeping the contrast high for
+     an older audience. All copy stays dark ink on a pale field.
+     ====================================================================== */
+  .site-footer {
+    position: relative;
+    color: var(--ink);
+    background:
+      radial-gradient(120% 120% at 12% 0%, rgba(232,178,58,0.10) 0%, rgba(232,178,58,0) 45%),
+      linear-gradient(165deg, #F4EEE4 0%, #F1E7D6 52%, #F4E4CB 100%);
+    border-top: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  /* Signature stratum strip — the full logo gradient as a thin top edge */
+  .site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--hot-deep);
+  }
+
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.5fr;
+    gap: clamp(32px, 5vw, 64px);
+    padding-block: clamp(48px, 6vw, 76px) clamp(36px, 4vw, 52px);
+  }
+
+  /* --- Brand column ---------------------------------------------------- */
+  .footer-brand { max-width: 320px; }
+  .footer-brand .brand-logo {
+    height: 60px;            /* bigger than the 32px footer logo in index.html */
+    width: auto;
+  }
+  .footer-brand p {
+    margin-top: 22px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+  .footer-cert {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .footer-cert::before {
+    content: "";
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--amber);
+  }
+
+  /* --- Link columns ---------------------------------------------------- */
+  .footer-col-title {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    margin-bottom: 18px;
+  }
+  .footer-col ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 13px;
+  }
+  .footer-col a {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    border-bottom: 1.5px solid transparent;
+    padding-bottom: 1px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .footer-col a:hover { color: var(--red); border-color: var(--red); }
+
+  /* --- CTA column ------------------------------------------------------ */
+  .footer-cta {
+    background: linear-gradient(160deg, rgba(251,248,242,0.9) 0%, rgba(244,228,203,0.85) 100%);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 26px 26px 28px;
+    align-self: start;
+  }
+  .footer-cta .cta-kick {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+  .footer-cta-title {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+  .cta-stack { display: flex; flex-direction: column; gap: 12px; }
+  /* contact rows mirror the header's call/contact pattern */
+  .contact-item-footer {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 15px;
+    min-height: 60px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    transition: border-color .15s ease, background .15s ease, transform .15s ease;
+  }
+  .contact-item-footer:hover { transform: translateY(-1px); border-color: var(--ink); }
+  .ci-ico {
+    width: 42px; height: 42px; flex: 0 0 42px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: var(--cream-soft);
+    border: 1px solid var(--rule);
+    color: var(--red);
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .ci-ico svg { width: 18px; height: 18px; }
+  .ci-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .ci-label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--mute); font-weight: 600; font-family: var(--font-mono);
+  }
+  .ci-val { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; }
+  .contact-item-footer:hover .ci-ico { background: var(--ink); color: var(--gold); border-color: var(--ink); }
+  .contact-item-footer:hover .ci-val { color: #000; }
+  .cta-note {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* --- Base bar -------------------------------------------------------- */
+  .footer-base {
+    border-top: 1px solid var(--rule);
+    padding-block: 22px clamp(28px, 3vw, 36px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--mute);
+  }
+  .footer-base .legal { display: flex; gap: 18px; flex-wrap: wrap; }
+  .footer-base .legal a:hover { color: var(--ink); }
+
+  /* ======================================================================
+     Responsive
+     ====================================================================== */
+  @media (max-width: 991.98px) {
+    .footer-main {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 32px;
+    }
+    .footer-brand { grid-column: 1 / -1; max-width: none; }
+    /* CTA spans full width and lands last — final thing on the page */
+    .footer-cta { grid-column: 1 / -1; }
+  }
+  @media (max-width: 575.98px) {
+    .footer-main { grid-template-columns: 1fr; }
+    .footer-base { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+
+  /* Demo scaffold so the footer can be previewed in context */
+  .demo-pad { padding-block: clamp(48px, 8vw, 90px); }
+  .demo-pad .wcg-wrap {
+    color: var(--mute); font-family: var(--font-mono);
+    letter-spacing: 0.14em; font-size: 12px; text-transform: uppercase;
+  }

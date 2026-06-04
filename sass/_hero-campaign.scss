@@ -1,0 +1,277 @@
+    /* ======================================================================
+       CONDO CAMPAIGN HERO — "Cooling season" variant.
+       Light, cool palette for the summer push: heat pumps fail in the heat,
+       so healthy reads cool-blue and failing reads warm-coral. Built on the
+       Grounded layout helpers (.wcg-wrap / .btn-pill / .mono) with a cool
+       token set layered on top.
+       ====================================================================== */
+
+    :root {
+      --cool-bg:    oklch(0.972 0.012 230);   /* light frost background */
+      --cool-panel: oklch(0.995 0.004 230);   /* near-white card */
+      --cool-ink:   oklch(0.30 0.035 245);    /* deep cool slate text */
+      --cool-soft:  oklch(0.44 0.03 243);     /* secondary text */
+      --cool-mute:  oklch(0.58 0.02 240);     /* mono / labels */
+      --cool-rule:  oklch(0.90 0.015 232);    /* hairlines */
+      --cool-blue:  oklch(0.55 0.13 240);     /* primary cool accent */
+      --cool-teal:  oklch(0.62 0.10 205);     /* healthy / cooling */
+      --warm-coral: oklch(0.62 0.15 35);      /* heat / failure accent */
+      --warm-amber: oklch(0.72 0.13 70);      /* transitional */
+    }
+
+    .campaign {
+      background:
+        radial-gradient(120% 90% at 78% 0%, oklch(0.94 0.04 225) 0%, transparent 55%),
+        var(--cool-bg);
+      color: var(--cool-ink);
+      position: relative;
+      overflow: hidden;
+      padding-block: clamp(36px, 5vw, 64px) clamp(44px, 6vw, 72px);
+    }
+    /* cool temperature band along the bottom edge — cold → warm gradient */
+    .campaign::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 6px;
+      background: linear-gradient(90deg,
+        var(--cool-teal) 0 30%, var(--cool-blue) 30% 58%,
+        var(--warm-amber) 58% 80%, var(--warm-coral) 80% 100%);
+      opacity: .95;
+    }
+
+    /* live campaign flag */
+    .campaign-flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cool-mute);
+      margin-bottom: 28px;
+    }
+    .campaign-flag .pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--cool-teal);
+      box-shadow: 0 0 0 0 oklch(0.62 0.10 205 / 0.6);
+      animation: campaignPulse 2.4s ease-out infinite;
+    }
+    .campaign-flag .tag-live {
+      color: var(--cool-blue);
+      font-weight: 600;
+    }
+    .campaign-flag .sep { opacity: .4; }
+    @keyframes campaignPulse {
+      0%   { box-shadow: 0 0 0 0 oklch(0.62 0.10 205 / 0.55); }
+      70%  { box-shadow: 0 0 0 9px oklch(0.62 0.10 205 / 0); }
+      100% { box-shadow: 0 0 0 0 oklch(0.62 0.10 205 / 0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .campaign-flag .pulse { animation: none; }
+    }
+
+    .campaign h2 {
+      font-size: clamp(36px, 5.2vw, 68px);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      font-weight: 600;
+      text-wrap: balance;
+      margin: 0;
+    }
+    .campaign h2 .amber { color: var(--cool-blue); }
+    .campaign h2 .age {
+      color: var(--cool-blue);
+      white-space: nowrap;
+    }
+
+    .campaign-lede {
+      font-size: clamp(16px, 1.45vw, 18px);
+      line-height: 1.55;
+      color: var(--cool-soft);
+      max-width: 480px;
+      margin-top: 26px;
+      text-wrap: pretty;
+    }
+    .campaign-lede b { color: var(--cool-ink); font-weight: 600; }
+
+    .campaign-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    /* cool-blue primary */
+    .btn-amber {
+      background: var(--cool-blue);
+      color: #fff;
+      border-color: var(--cool-blue);
+    }
+    .btn-amber:hover { background: oklch(0.50 0.13 240); border-color: oklch(0.50 0.13 240); color: #fff; }
+    /* outline variant on the light background */
+    .btn-outline-light {
+      background: transparent;
+      color: var(--cool-ink);
+      border-color: oklch(0.55 0.13 240 / 0.45);
+    }
+    .btn-outline-light:hover { background: var(--cool-ink); color: var(--cool-bg); border-color: var(--cool-ink); }
+
+    .campaign-trust {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px 22px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--cool-soft);
+    }
+    .campaign-trust .ti { display: inline-flex; align-items: center; gap: 8px; }
+    .campaign-trust .check { color: var(--cool-teal); font-weight: 700; }
+    .campaign-trust .sep { opacity: .3; }
+
+    /* ---- Right column: age-risk figure card --------------------------- */
+    .campaign-fig {
+      background: var(--cool-panel);
+      border: 1px solid var(--cool-rule);
+      border-radius: 8px;
+      padding: 26px 28px 28px;
+      position: relative;
+      box-shadow: 0 1px 2px oklch(0.5 0.05 240 / 0.04), 0 18px 40px oklch(0.5 0.08 240 / 0.07);
+    }
+    .campaign-fig .figure-tag {
+      position: static;
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cool-mute);
+      margin-bottom: 22px;
+    }
+    .campaign-fig .fig-q {
+      font-size: clamp(20px, 2vw, 24px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 0 0 24px;
+    }
+    .campaign-fig .fig-q .age { color: var(--cool-blue); white-space: nowrap; }
+
+    /* the signature age scale */
+    .age-scale { margin-top: 4px; padding-top: 40px; }
+    .age-track {
+      position: relative;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+    }
+    .age-track .seg-green  { flex: 7;  background: var(--cool-teal); }
+    .age-track .seg-amber  { flex: 7;  background: var(--warm-amber); }
+    .age-track .seg-red    { flex: 6;  background: var(--warm-coral); }
+    .age-window {
+      position: absolute;
+      top: -7px; bottom: -7px;
+      left: 35%; right: 0;
+      border: 1.5px solid var(--cool-ink);
+      border-radius: 6px;
+      pointer-events: none;
+    }
+    .age-window-lbl {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--warm-coral);
+      padding: 4px 9px;
+      border-radius: 4px;
+    }
+    .age-window-lbl::after {
+      content: "";
+      position: absolute;
+      bottom: -4px; left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px; height: 8px;
+      background: var(--warm-coral);
+    }
+    .age-ticks {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--cool-mute);
+    }
+    .age-legend {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--cool-rule);
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .age-legend .leg {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 13px;
+      color: var(--cool-soft);
+    }
+    .age-legend .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+    .age-legend .leg b { color: var(--cool-ink); font-weight: 600; }
+
+    /* stat strip under the figure */
+    .campaign-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 18px;
+      border: 1px solid var(--cool-rule);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--cool-panel);
+    }
+    .campaign-stats .cell {
+      padding: 20px 18px;
+      border-right: 1px solid var(--cool-rule);
+    }
+    .campaign-stats .cell:last-child { border-right: none; }
+    .campaign-stats .num {
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--cool-ink);
+    }
+    .campaign-stats .num .u {
+      font-size: 0.45em;
+      color: var(--cool-blue);
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .campaign-stats .lbl {
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cool-mute);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 991.98px) {
+      .campaign-fig { margin-top: 8px; }
+    }
+    @media (max-width: 575.98px) {
+      .campaign-stats { grid-template-columns: 1fr; }
+      .campaign-stats .cell { border-right: none; border-bottom: 1px solid var(--cool-rule); }
+      .campaign-stats .cell:last-child { border-bottom: none; }
+    }

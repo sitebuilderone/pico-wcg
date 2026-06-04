@@ -42,7 +42,7 @@ add_action( 'wp_enqueue_scripts', function() {
 add_action( 'wp_enqueue_scripts', function() {	   
     
     //UNCOMMENT next row to include the js/custom.js file globally
-    //wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array(/* 'jquery' */), null, array('strategy' => 'defer', 'in_footer' => true) ); 
+    wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array(/* 'jquery' */), null, array('strategy' => 'defer', 'in_footer' => true) ); 
 
     //UNCOMMENT next 3 rows to load the js file only on one page
     //if (is_page('mypageslug')) {
