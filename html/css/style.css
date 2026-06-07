@@ -620,6 +620,29 @@ a { color: inherit; text-decoration: none; }
   min-height: 208px;
 }
 
+.about-service-card .svc-head {
+  display: block;
+}
+
+.about-service-card .svc-num {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(110,90,69,0.28);
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(61,50,37,0.82);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,242,234,0.92));
+}
+
+.about-service-card h3 {
+  line-height: 1.08;
+}
+
 .about-dark-copy {
   margin-top: 18px;
 }
