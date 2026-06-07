@@ -1,0 +1,64 @@
+<!-- west coast geothermal blog post -->
+<tangible>
+	<if field="image">
+		<img src="{Field image_url}" class="w-100 object-fit-cover min-vh-25 min-vh-md-50 mb-n7 wcg-blog-single__hero-image" style="max-height: 420px; object-fit: cover;" alt="{Field image_alt}">
+		<else> <!-- else cases are not shown in preview -->
+			<img src="https://placehold.co/600x400?text=Placeholder" class="w-100 min-vh-25 min-vh-md-50 mb-n7 wcg-blog-single__hero-image" style="max-height: 420px; object-fit: cover;">
+		</else>
+
+	</if>
+	<div id="container-content-single" class="container wcg-blog-single mt-md-n6 position-relative mb-6">
+		<article class="wcg-blog-single__surface">
+			<div class="row text-center">
+				<div class="col-12 mb-4 mb-md-5">
+					<div class="lc-block">
+						<h1 class="wcg-blog-single__title">
+							<field name="title"></field>
+						</h1>
+					</div>
+					<div class="lc-block">
+						<p class="wcg-blog-single__date">
+							<date locale="{Setting WPLANG}">
+								<field name="publish_date"> </field>
+							</date>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row mb-0">
+				<div class="col-12 col-lg-10 col-xl-8 mx-auto">
+
+					<div class="lc-block wcg-blog-single__content">
+						<field name="content"></field>
+					</div>
+					<div class="lc-block">
+						<if user_role="" includes="" value="administrator, editor, author">
+							<a href="{Field edit_url}" class="d-inline-flex mt-4 mb-1 link-rule">
+								Edit this post
+							</a>
+						</if>
+
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+	<div class="container wcg-blog-single wcg-blog-single__cta-container mt-4 mb-6">
+		<div class="row">
+			<div class="col-12 col-lg-10 col-xl-8 mx-auto">
+				<div class="lc-block wcg-blog-single__cta-wrap">
+					<section class="wcg-blog-single__cta" aria-label="Contact call to action">
+						<p class="kicker kicker--plain">Need help?</p>
+						<h2>Questions about your system or service needs?</h2>
+						<p>Talk to West Coast Geothermal for practical guidance on troubleshooting, service, repair, or replacement options.</p>
+						<div class="wcg-blog-single__cta-actions">
+							<a href="/contact/" class="btn-pill btn-solid">Contact Us</a>
+							<a href="/services/" class="btn-pill btn-outline btn-sm">View Services</a>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+</tangible>
+
