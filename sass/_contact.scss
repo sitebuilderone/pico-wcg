@@ -33,6 +33,26 @@
 
 .contact-svc-card h3 {
   font-size: clamp(22px, 2vw, 25px);
+  line-height: 1.08;
+}
+
+.contact-svc-card .svc-head {
+  display: block;
+}
+
+.contact-svc-card .svc-num {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(110,90,69,0.28);
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(61,50,37,0.82);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,242,234,0.92));
 }
 
 .contact-form-shell {
