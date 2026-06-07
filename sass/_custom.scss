@@ -31,7 +31,7 @@
 
   /* horizontal page padding, responsive */
   --gutter: clamp(20px, 5vw, 56px);
-  --maxw: 1280px;
+  --maxw: 1480px;
 }
 
 /* --- Base ---------------------------------------------------------------- */
@@ -60,13 +60,15 @@ a { color: inherit; text-decoration: none; }
 
 /* layout helper: centred page column with responsive gutters */
 .wcg-wrap {
- /*
   max-width: var(--maxw);
-    padding-inline: var(--gutter);
-  */
+  padding-inline: 0;
   margin-inline: auto;
 
   width: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .wcg-wrap { padding-inline: var(--gutter); }
 }
 
 /* shared eyebrow / kicker label */
