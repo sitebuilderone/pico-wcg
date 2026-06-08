@@ -1,0 +1,393 @@
+/* ==========================================================================
+   West Coast Geothermal - Services page
+   Heat pump repair and installation focus
+   ========================================================================== */
+
+.services-hero {
+  padding-block: clamp(48px, 7vw, 92px) clamp(56px, 8vw, 96px);
+}
+
+.services-hero .hero-lede {
+  max-width: 620px;
+}
+
+.services-hero-panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(251,248,242,0.96));
+}
+
+.services-focus-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: grid;
+  gap: 18px;
+}
+
+.services-focus-list li {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.services-focus-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.services-focus-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  color: var(--red);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.services-focus-list h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.services-focus-list p {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.services-section-note {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 430px;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.services-loop-card {
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.services-loop-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(110,90,69,0.46);
+  box-shadow: 0 18px 28px rgba(61,50,37,0.08);
+}
+
+.services-loop-card .svc-photo {
+  min-height: 216px;
+}
+
+.services-loop-card .svc-head {
+  display: block;
+}
+
+.services-loop-card .svc-num {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(110,90,69,0.28);
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(61,50,37,0.82);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,242,234,0.92));
+}
+
+.services-loop-card h3 {
+  line-height: 1.08;
+}
+
+.services-loop-excerpt {
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.services-loop-excerpt p {
+  margin: 0;
+}
+
+.services-loop-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-family: var(--font-mono);
+}
+
+.services-loop-link::after {
+  content: ">";
+  color: var(--red);
+}
+
+.services-list-wrap {
+  margin-top: clamp(34px, 5vw, 58px);
+  padding-top: clamp(28px, 4vw, 40px);
+  border-top: 1px solid var(--rule);
+}
+
+.services-list-layout {
+  --bs-gutter-y: 1.5rem;
+}
+
+.services-about-panel {
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(249,246,243,0.96));
+  padding: clamp(22px, 2.4vw, 30px);
+}
+
+.services-about-panel h3 {
+  margin-top: 14px;
+  margin-bottom: 14px;
+  font-size: clamp(28px, 2.6vw, 36px);
+  line-height: 1.03;
+  letter-spacing: -0.025em;
+}
+
+.services-about-panel p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.services-about-points {
+  list-style: none;
+  padding: 0;
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.services-about-points li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.services-about-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.services-about-actions {
+  margin-top: 20px;
+}
+
+.services-list-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.services-list-note {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--mute);
+  max-width: 560px;
+}
+
+.services-list-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.services-list-item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: stretch;
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow .16s ease, border-color .16s ease, transform .16s ease;
+}
+
+.services-list-item:hover {
+  border-color: rgba(110,90,69,0.46);
+  box-shadow: 0 14px 24px rgba(61,50,37,0.07);
+  transform: translateY(-1px);
+}
+
+.services-list-media {
+  min-height: 162px;
+  background: linear-gradient(145deg, var(--earth2), var(--earth3));
+  position: relative;
+}
+
+.services-list-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.services-list-fallback {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  color: rgba(249,246,243,0.92);
+}
+
+.services-list-body {
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.services-list-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 9px;
+}
+
+.services-list-body h3 {
+  margin: 0;
+  font-size: clamp(24px, 2.1vw, 30px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+}
+
+.services-list-title-link {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .16s ease, color .16s ease;
+}
+
+.services-list-title-link:hover {
+  border-bottom-color: rgba(27,25,22,0.7);
+}
+
+.services-list-title-link:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.services-list-excerpt {
+  margin-top: 10px;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.services-list-excerpt p {
+  margin: 0;
+}
+
+.services-priority-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.services-priority-card {
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  background: #fff;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.services-priority-kicker {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--mute);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.services-priority-card h4 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.services-priority-card p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+@media (max-width: 1199.98px) {
+  .services-priority-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .services-about-panel h3 {
+    font-size: clamp(26px, 6vw, 32px);
+  }
+
+  .services-focus-list h3 {
+    font-size: 20px;
+  }
+
+  .services-loop-card .svc-photo {
+    min-height: 190px;
+  }
+
+  .services-list-item {
+    grid-template-columns: 170px 1fr;
+  }
+
+  .services-list-media {
+    min-height: 148px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .services-list-item {
+    grid-template-columns: 1fr;
+  }
+
+  .services-list-media {
+    min-height: 190px;
+  }
+}
