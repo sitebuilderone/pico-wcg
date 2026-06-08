@@ -1,5 +1,5 @@
 :root {
-    --cream:      #F1EAE0;
+  --cream:      #F9F6F3;
     --cream-soft: #EAE1D3;
     --paper:      #FBF8F2;
     --ink:        #1B1916;
@@ -13,9 +13,6 @@
 
     --font-sans: "Inter Tight", "Inter", system-ui, -apple-system, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-
-    /* The signature gradient, lifted from the logo: cool surface -> hot core */
-    --hot-deep: linear-gradient(135deg, #B83A2A 0%, #D98A2B 55%, #E8B23A 100%);
 
     --gutter: clamp(20px, 5vw, 56px);
     --maxw: 1280px;
@@ -47,26 +44,14 @@
 
   /* ======================================================================
      Footer
-     A light, warm gradient "ground" — cream at the surface fading into a
-     soft gold core, echoing the logo while keeping the contrast high for
-     an older audience. All copy stays dark ink on a pale field.
+     Clean, flat cream surface for a calmer visual baseline.
      ====================================================================== */
   .site-footer {
     position: relative;
     color: var(--ink);
-    background:
-      radial-gradient(120% 120% at 12% 0%, rgba(232,178,58,0.10) 0%, rgba(232,178,58,0) 45%),
-      linear-gradient(165deg, #F4EEE4 0%, #F1E7D6 52%, #F4E4CB 100%);
+    background: var(--cream);
     border-top: 1px solid var(--rule);
     overflow: hidden;
-  }
-  /* Signature stratum strip — the full logo gradient as a thin top edge */
-  .site-footer::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 4px;
-    background: var(--hot-deep);
   }
 
   .footer-main {
@@ -136,7 +121,7 @@
 
   /* --- CTA column ------------------------------------------------------ */
   .footer-cta {
-    background: linear-gradient(160deg, rgba(251,248,242,0.9) 0%, rgba(244,228,203,0.85) 100%);
+    background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 16px;
     padding: 26px 26px 28px;

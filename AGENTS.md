@@ -15,7 +15,7 @@ and component conventions unless the existing code points another way.
 ## Important Folders
 
 - `/html` contains flat HTML development files.
-- `/html-lc` contains LiveCanvas partials.
+- `/html-lc` contains LiveCanvas partials and dynamic templates ( https://docs.livecanvas.com/dynamic-templating/ )
 - `/sass` contains Sass customizations for the site.
 
 Current Sass customization files include:

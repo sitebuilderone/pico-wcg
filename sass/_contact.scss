@@ -2,9 +2,7 @@
    Contact page
    ========================================================================== */
 .contact-hero {
-  background:
-    radial-gradient(circle at 85% 8%, rgba(217,138,43,0.14), rgba(217,138,43,0) 45%),
-    linear-gradient(180deg, rgba(251,248,242,0.85), rgba(234,225,211,0.75));
+  background: var(--cream);
   padding-block: clamp(40px, 7vw, 84px);
 }
 
@@ -26,9 +24,7 @@
 .contact-svc-card .svc-photo {
   min-height: 120px;
   aspect-ratio: auto;
-  background:
-    linear-gradient(150deg, rgba(61,50,37,0.82), rgba(110,90,69,0.88)),
-    repeating-linear-gradient(135deg, rgba(255,255,255,0.14) 0 8px, rgba(255,255,255,0.03) 8px 16px);
+  background: rgba(61,50,37,0.86);
 }
 
 .contact-svc-card h3 {
@@ -52,7 +48,7 @@
   text-transform: uppercase;
   white-space: nowrap;
   color: rgba(61,50,37,0.82);
-  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,242,234,0.92));
+  background: rgba(255,255,255,0.94);
 }
 
 .contact-form-shell {
@@ -74,7 +70,7 @@
   height: 4px;
   border-radius: 999px;
   margin-bottom: 16px;
-  background: linear-gradient(90deg, var(--amber), var(--red));
+  background: var(--amber);
 }
 
 .contact-form-lede {

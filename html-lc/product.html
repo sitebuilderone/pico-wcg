@@ -1,0 +1,78 @@
+<section class="woocommerce wcg-product-page" aria-labelledby="wcg-product-title">
+	<div class="wcg-product-hero overflow-hidden">
+		<div id="container-content-single-product" class="container wcg-wrap">
+			<div class="row g-0 align-items-stretch">
+			<div class="col-lg-6 align-self-lg-stretch">
+				<div class="wcg-product-media h-100">
+					[lc_wc_carousel image_class="w-100"]
+				</div>
+			</div>
+			<div class="col-lg-6 col-xl-5 ms-xl-auto">
+				<div class="wcg-product-panel">
+					<div class="wcg-product-notices">[lc_wc_notices]</div>
+					<div class="lc-block">[lc_wc_on_sale_badge class="badge rounded-pill wcg-product-sale mt-1"]</div>
+					<div class="mt-3 lc-block">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb wcg-product-breadcrumb mono mb-0">
+								<li class="breadcrumb-item">
+									<a href="[lc_wc_get_page_url]">Products</a>
+								</li>
+								<li class="breadcrumb-item">
+									<a href="[lc_wc_product_category get='url']">[lc_wc_product_category]</a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">[lc_wc_product get="name"]</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="lc-block mt-3">
+						<h1 id="wcg-product-title" class="wcg-product-title">[lc_wc_product get="name"]</h1>
+					</div>
+
+					<div class="lc-block wcg-product-summary mt-4">
+						[lc_wc_product get="short_description" filter="wpautop"]
+					</div>
+
+					<tangible class="live-refresh">
+						<div class="wcg-product-features">
+							<field name="features"></field>
+						</div>
+					</tangible>
+
+					<div class="wcg-product-actions mt-4">
+						<tangible class="live-refresh">
+							[wcg_brochure_link]
+						</tangible>
+						<a href="/contact/" class="btn-pill btn-solid">Request Product Advice</a>
+					</div>
+
+					<p class="wcg-product-meta mono mb-0 mt-4">Need sizing or replacement guidance? We can help compare options for your property and application.</p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="woocommerce section section--soft wcg-product-description" aria-labelledby="wcg-product-overview-title">
+	<div class="container wcg-wrap">
+		<div class="section-head mb-4">
+			<div>
+				<p class="kicker kicker--plain">Product Overview</p>
+				<h2 class="section-title" id="wcg-product-overview-title">Specifications, details, and product information.</h2>
+			</div>
+		</div>
+		[lc_wc_product_tab_description]
+	</div>
+</section>
+
+<section class="woocommerce section wcg-product-related" aria-labelledby="wcg-product-related-title">
+	<div class="container wcg-wrap">
+		<div class="section-head mb-4">
+			<div>
+				<p class="kicker kicker--plain">You may also like</p>
+				<h2 class="section-title" id="wcg-product-related-title">Related products from the same geothermal ecosystem.</h2>
+			</div>
+		</div>
+		[lc_wc_related columns="4" posts_per_page="4" orderby="rand" order="desc"]
+	</div>
+</section>
