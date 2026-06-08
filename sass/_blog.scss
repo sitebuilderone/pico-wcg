@@ -31,11 +31,12 @@
 .wcg-blog-single__date {
 	margin-top: 14px;
 	margin-bottom: 0;
-	color: #686472;
-	font-size: clamp(16px, 1.8vw, 18px);
+	
+	color: var(--ink-soft);
+	font-size: clamp(14px,1.5vw,15px);
 	line-height: 1.25;
 	letter-spacing: -0.012em;
-	font-weight: 500;
+	font-weight: 400;
 }
 
 .wcg-blog-single__content {
@@ -79,7 +80,7 @@
 }
 
 .wcg-blog-single__content a {
-	color: var(--red);
+	color: var(--wcg-blue);
 	text-decoration: underline;
 	text-decoration-thickness: 1.5px;
 	text-underline-offset: 3px;
@@ -201,7 +202,10 @@
 
 	.wcg-blog-single__content p,
 	.wcg-blog-single__content li {
-		font-size: clamp(15px, 4.4vw, 18px);
+	font-size: clamp(16px,1vw,20px);
+	line-height: 1.6;
+	margin-bottom: 0.5rem;
+
 	}
 
 	.wcg-blog-single__content h2 {
