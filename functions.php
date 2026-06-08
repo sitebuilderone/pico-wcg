@@ -65,5 +65,67 @@ add_action( 'admin_notices', function  () {
 // OPTIONAL: FOR SECURITY: DISABLE APPLICATION PASSWORDS. Uncomment if needed
 //add_filter( 'wp_is_application_passwords_available', '__return_false' );
 
+// Cache-bust compiled CSS bundle so browser fetches updates after each build.
+add_filter( 'style_loader_src', function( $src ) {
+    if ( strpos( $src, 'css-output/bundle.css' ) === false ) {
+        return $src;
+    }
+
+    $bundle_path = get_stylesheet_directory() . '/css-output/bundle.css';
+    if ( ! file_exists( $bundle_path ) ) {
+        return $src;
+    }
+
+    $version = (string) filemtime( $bundle_path );
+    return add_query_arg( 'ver', $version, remove_query_arg( 'ver', $src ) );
+}, 20 );
+
 // ADD YOUR CUSTOM PHP CODE DOWN BELOW /////////////////////////
+
+// Skip GTM on local environments (for example: mysite.local).
+function wcg_should_load_gtm() {
+    $host = '';
+
+    if ( ! empty( $_SERVER['HTTP_HOST'] ) ) {
+        $host = (string) $_SERVER['HTTP_HOST'];
+    } else {
+        $host = (string) wp_parse_url( home_url(), PHP_URL_HOST );
+    }
+
+    $host = strtolower( preg_replace( '/:\\d+$/', '', $host ) );
+
+    if ( $host === 'localhost' || $host === '127.0.0.1' || $host === '::1' ) {
+        return false;
+    }
+
+    if ( substr( $host, -6 ) === '.local' ) {
+        return false;
+    }
+
+    return true;
+}
+
+if ( wcg_should_load_gtm() ) {
+    // Google Tag Manager: load script early in <head> and noscript after <body> opens.
+    add_action( 'wp_head', function() {
+        ?>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WKVZM35');</script>
+        <!-- End Google Tag Manager -->
+        <?php
+    }, 1 );
+
+    add_action( 'wp_body_open', function() {
+        ?>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKVZM35"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <?php
+    }, 1 );
+}
 
