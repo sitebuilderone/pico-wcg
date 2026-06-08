@@ -82,6 +82,8 @@ add_filter( 'style_loader_src', function( $src ) {
 
 // ADD YOUR CUSTOM PHP CODE DOWN BELOW /////////////////////////
 
+require_once get_stylesheet_directory() . '/inc/product-fields.php';
+
 // Skip GTM on local environments (for example: mysite.local).
 function wcg_should_load_gtm() {
     $host = '';
