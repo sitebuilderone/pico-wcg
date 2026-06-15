@@ -1,0 +1,262 @@
+
+/* ==========================================================================
+   Anatomy — the three parts of a geothermal system
+   ========================================================================== */
+.parts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+.part {
+  padding: 30px 28px 32px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.part .num {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.16em; color: var(--red);
+  margin-bottom: 18px;
+}
+.part h3 { font-size: 23px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+.part h3 .it { color: var(--ink); }
+.part p {
+  margin-top: 12px; font-size: 14.5px; line-height: 1.55;
+  color: var(--ink-soft); text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Why-it-wins pillar rows (on dark) — extends .compare visuals
+   ========================================================================== */
+.pillar-rows .col-k {
+  font-family: var(--font-sans);
+  font-size: 20px; font-weight: 600; letter-spacing: -0.015em;
+  text-transform: none; color: var(--cream);
+  align-items: flex-start; padding-top: 24px;
+}
+.pillar-rows .col-k small {
+  display: block; margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--amber); font-weight: 500;
+}
+
+/* ==========================================================================
+   New build / upgrade / retrofit — scenario cards
+   ========================================================================== */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.scenario {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  padding: 30px 28px 30px;
+  display: flex; flex-direction: column;
+}
+.scenario.is-ideal { border-color: var(--ink); border-width: 1.5px; }
+.scenario-head {
+  display: flex; align-items: baseline; gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--mute);
+}
+.scenario-head .num { color: var(--red); }
+.scenario-head .flag { color: var(--amber); margin-left: auto; }
+.scenario h3 {
+  margin-top: 14px;
+  font-size: 27px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.04;
+}
+.scenario h3 .it { color: var(--ink); }
+.scenario-block { margin-top: 22px; }
+.scenario-block .lbl {
+  font-family: var(--font-mono);
+  font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 8px;
+}
+.scenario-block.plan .lbl { color: var(--mute); }
+.scenario-block p {
+  font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); text-wrap: pretty;
+}
+.scenario-divider { height: 1px; background: var(--rule); margin: 22px 0 0; }
+
+/* ==========================================================================
+   Gas vs Air-source vs Geothermal — 4-column comparison table
+   ========================================================================== */
+.geo-compare-wrap {
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+table.geo-compare { width: 100%; border-collapse: collapse; background: var(--card-bg); }
+.geo-compare thead th {
+  background: var(--ink); color: rgba(241,234,224,0.65);
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+  text-align: left; padding: 18px 22px; vertical-align: bottom;
+}
+.geo-compare thead th .big {
+  display: block; margin-top: 6px;
+  font-family: var(--font-sans);
+  font-size: 16px; letter-spacing: -0.01em; color: var(--cream); font-weight: 600;
+  text-transform: none;
+}
+.geo-compare thead th.is-geo { background: var(--red); }
+.geo-compare thead th.is-geo,
+.geo-compare thead th.is-geo .big { color: var(--cream); }
+.geo-compare thead th.is-geo .big { color: #fff; }
+.geo-compare tbody th {
+  text-align: left; font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--mute);
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+  width: 24%;
+}
+.geo-compare tbody td {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 15px; line-height: 1.4; color: var(--ink-soft); vertical-align: middle;
+}
+.geo-compare tbody tr:last-child th,
+.geo-compare tbody tr:last-child td { border-bottom: none; }
+.geo-compare td.is-geo {
+  background: rgba(184,58,42,0.06);
+  color: var(--ink); font-weight: 600;
+}
+.geo-compare td.no { color: var(--earth3); }
+.geo-compare td.yes { color: #2C8A4A; font-weight: 600; }
+.geo-compare td.is-geo.yes { color: #2C8A4A; }
+
+/* ==========================================================================
+   ROI crossover figure (dark) — reuses .figure-card frame
+   ========================================================================== */
+.roi-fig { position: relative; padding: 0; overflow: hidden; background: var(--ink); border-color: var(--ink); }
+.roi-fig svg { display: block; width: 100%; height: auto; }
+.roi-fig-tag {
+  position: absolute;
+  top: 16px; left: 18px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(241,234,224,0.85);
+  z-index: 2;
+}
+.roi-fig-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+.roi-fig-legend {
+  display: flex; gap: 26px; flex-wrap: wrap;
+  padding: 16px 22px;
+  border-top: 1px solid rgba(241,234,224,0.16);
+}
+.roi-fig-legend .key {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(241,234,224,0.72);
+}
+.roi-fig-legend .key .sw { width: 18px; height: 3px; border-radius: 2px; }
+
+/* numbers strip that sits beside / under the ROI figure */
+.roi-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(241,234,224,0.16);
+  margin-top: 20px;
+}
+.roi-stats .cell {
+  padding: 26px 24px;
+  border-right: 1px solid rgba(241,234,224,0.16);
+}
+.roi-stats .cell:last-child { border-right: none; }
+.roi-stats .num {
+  font-size: clamp(34px, 4vw, 46px); font-weight: 600;
+  letter-spacing: -0.035em; line-height: 1; color: var(--cream);
+}
+.roi-stats .num .u { font-size: 16px; color: rgba(241,234,224,0.55); font-weight: 500; }
+.roi-stats .lbl {
+  margin-top: 12px; font-size: 13px; line-height: 1.4;
+  color: rgba(241,234,224,0.65); text-wrap: pretty;
+}
+
+/* honest-numbers two-column layout */
+.numbers-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+.numbers-points {
+  display: flex; flex-direction: column; gap: 0;
+  border-top: 1px solid rgba(241,234,224,0.16);
+}
+.numbers-point {
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(241,234,224,0.16);
+}
+.numbers-point .pt-lbl {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 10px;
+}
+.numbers-point p {
+  font-size: 15.5px; line-height: 1.55; color: rgba(241,234,224,0.78); text-wrap: pretty;
+}
+.numbers-point p b { color: var(--cream); font-weight: 600; }
+.numbers-point a { color: var(--amber); border-bottom: 1px solid rgba(217,138,43,0.4); }
+
+/* ==========================================================================
+   Standalone page top strip (no full header) — slim brand + phone
+   ========================================================================== */
+.page-strip {
+  border-bottom: 1px solid var(--rule);
+  background: var(--cream);
+}
+.page-strip .wcg-wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding-block: 16px;
+}
+.page-strip .crumb {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute);
+}
+.page-strip .crumb .red { color: var(--red); }
+.page-strip .ph {
+  font-size: 15px; font-weight: 600; color: var(--ink);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  .parts-grid { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr; max-width: 520px; }
+  .numbers-grid { grid-template-columns: 1fr; }
+  .pillar-rows .compare-row { grid-template-columns: 1fr; }
+  .pillar-rows .compare-row > div { border-right: none; border-bottom: 1px solid rgba(241,234,224,0.14); }
+  .pillar-rows .col-k { padding-bottom: 4px; }
+}
+
+@media (max-width: 660px) {
+  .geo-compare thead { display: none; }
+  .geo-compare tbody th { display: block; width: auto; border-bottom: none; padding-bottom: 4px; color: var(--ink); }
+  .geo-compare tbody td { display: flex; justify-content: space-between; gap: 16px; padding: 6px 22px; border-bottom: none; }
+  .geo-compare tbody td::before {
+    content: attr(data-col);
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mute); flex: none;
+  }
+  .geo-compare tbody tr { display: block; border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
+  .geo-compare tbody tr:last-child { border-bottom: none; }
+  .geo-compare td.is-geo { background: rgba(184,58,42,0.06); }
+}
+
+@media (max-width: 575.98px) {
+  .roi-stats { grid-template-columns: 1fr; }
+  .roi-stats .cell { border-right: none; border-bottom: 1px solid rgba(241,234,224,0.16); }
+  .roi-stats .cell:last-child { border-bottom: none; }
+  .page-strip .crumb { display: none; }
+}

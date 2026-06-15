@@ -274,7 +274,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.2em;
   color: var(--mute);
 }
-.figure-card svg { display: block; width: 100%; max-width: 520px; margin-inline: auto; }
+.figure-card svg { display: block; width: 100%;  margin-inline: auto; }
 
 /* ==========================================================================
    Section scaffolding

@@ -65,20 +65,160 @@ add_action( 'admin_notices', function  () {
 // OPTIONAL: FOR SECURITY: DISABLE APPLICATION PASSWORDS. Uncomment if needed
 //add_filter( 'wp_is_application_passwords_available', '__return_false' );
 
+// Keep stylesheet and preload URL versions in sync to avoid duplicate CSS downloads.
+function wcg_get_bundle_css_version() {
+    $bundle_path = get_stylesheet_directory() . '/css-output/bundle.css';
+
+    if ( file_exists( $bundle_path ) ) {
+        return (string) filemtime( $bundle_path );
+    }
+
+    return (string) get_theme_mod( 'css_bundle_version_number' );
+}
+
 // Cache-bust compiled CSS bundle so browser fetches updates after each build.
 add_filter( 'style_loader_src', function( $src ) {
     if ( strpos( $src, 'css-output/bundle.css' ) === false ) {
         return $src;
     }
 
-    $bundle_path = get_stylesheet_directory() . '/css-output/bundle.css';
-    if ( ! file_exists( $bundle_path ) ) {
+    $version = wcg_get_bundle_css_version();
+    if ( $version === '' ) {
         return $src;
     }
 
-    $version = (string) filemtime( $bundle_path );
     return add_query_arg( 'ver', $version, remove_query_arg( 'ver', $src ) );
 }, 20 );
+
+// Override parent preload hint so it uses the same version as the stylesheet URL.
+add_action( 'after_setup_theme', function() {
+    if ( function_exists( 'picostrap_hints' ) ) {
+        remove_action( 'send_headers', 'picostrap_hints' );
+    }
+
+    add_action( 'send_headers', function() {
+        if ( get_theme_mod( 'disable_bootstrap' ) || ! function_exists( 'picostrap_get_css_url' ) ) {
+            return;
+        }
+
+        $bundle_url = picostrap_get_css_url();
+        $version    = wcg_get_bundle_css_version();
+
+        if ( $version !== '' ) {
+            $bundle_url = add_query_arg( 'ver', $version, remove_query_arg( 'ver', $bundle_url ) );
+        }
+
+        $headers = 'link: <' . $bundle_url . '>; rel=preload; as=style';
+
+        if ( ! get_theme_mod( 'disable_gutenberg' ) || ( function_exists( 'lc_plugin_option_is_set' ) && lc_plugin_option_is_set( 'gtblocks' ) ) ) {
+            $headers .= ', <' . includes_url() . 'css/dist/block-library/style.min.css?ver=' . get_bloginfo( 'version' ) . '>; rel=preload; as=style';
+        }
+
+        header( $headers );
+    } );
+}, 20 );
+
+// Load WooCommerce front-end assets only where they are needed.
+function wcg_should_load_woocommerce_assets() {
+    if ( is_admin() ) {
+        return true;
+    }
+
+    if ( ! function_exists( 'is_woocommerce' ) ) {
+        return false;
+    }
+
+    if ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() ) {
+        return true;
+    }
+
+    if ( ! is_singular() ) {
+        return false;
+    }
+
+    $post = get_post();
+    if ( ! $post instanceof WP_Post ) {
+        return false;
+    }
+
+    if ( has_block( 'woocommerce/', $post ) ) {
+        return true;
+    }
+
+    $shortcodes = array(
+        'products',
+        'product',
+        'product_page',
+        'add_to_cart',
+        'add_to_cart_url',
+        'product_categories',
+        'featured_products',
+        'sale_products',
+        'best_selling_products',
+        'recent_products',
+        'top_rated_products',
+        'woocommerce_cart',
+        'woocommerce_checkout',
+        'woocommerce_my_account',
+    );
+
+    foreach ( $shortcodes as $shortcode ) {
+        if ( has_shortcode( $post->post_content, $shortcode ) ) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+add_filter( 'woocommerce_enqueue_styles', function( $styles ) {
+    if ( wcg_should_load_woocommerce_assets() ) {
+        return $styles;
+    }
+
+    return array();
+}, 20 );
+
+add_action( 'wp_enqueue_scripts', function() {
+    if ( wcg_should_load_woocommerce_assets() ) {
+        return;
+    }
+
+    $style_handles = array(
+        'wc-blocks-style',
+        'woocommerce-layout',
+        'woocommerce-smallscreen',
+        'woocommerce-general',
+    );
+
+    foreach ( $style_handles as $handle ) {
+        wp_dequeue_style( $handle );
+        wp_deregister_style( $handle );
+    }
+
+    $script_handles = array(
+        'wc-jquery-blockui',
+        'wc-js-cookie',
+        'woocommerce',
+        'wc-cart-fragments',
+        'js-cookie',
+    );
+
+    foreach ( $script_handles as $handle ) {
+        wp_dequeue_script( $handle );
+        wp_deregister_script( $handle );
+    }
+}, 999 );
+
+add_action( 'wp', function() {
+    if ( wcg_should_load_woocommerce_assets() ) {
+        return;
+    }
+
+    if ( function_exists( 'wc_gallery_noscript' ) ) {
+        remove_action( 'wp_head', 'wc_gallery_noscript' );
+    }
+} );
 
 // ADD YOUR CUSTOM PHP CODE DOWN BELOW /////////////////////////
 
