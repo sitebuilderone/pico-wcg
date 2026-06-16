@@ -1,0 +1,424 @@
+/* ==========================================================================
+   West Coast Geothermal — "Building Group Pricing" service sub-page
+   Built on the same tokens + type system as css/style.css and reuses many
+   components from css/condo.css (.offer, .compare, .why-grid, .faq-list,
+   .form-card, .group-stat, .cta-final-grid). This file only carries the
+   components unique to the group-pricing page.
+   ========================================================================== */
+
+/* This is a WordPress content partial: the theme supplies header + footer,
+   so the partial owns its own top/bottom rhythm. */
+.gp-root { background: var(--cream); color: var(--ink); }
+.gp-root .section:first-child { border-top: none; }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.gp-hero { padding-block: clamp(40px, 6vw, 80px) clamp(48px, 7vw, 88px); }
+.gp-hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.gp-h1 {
+  font-size: clamp(42px, 6vw, 82px);
+  line-height: 0.97;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+.gp-h1 .it { color: var(--ink); }
+.gp-h1 .amber { color: var(--red); }
+.gp-sub {
+  font-size: clamp(17px, 1.55vw, 19px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 520px;
+  margin-top: 30px;
+  text-wrap: pretty;
+}
+.gp-sub b { font-weight: 600; color: var(--ink); }
+.gp-cta { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; align-items: center; }
+
+/* hero figure card — multi-unit tower schematic */
+.gp-fig { position: relative; padding: 0; overflow: hidden; }
+.gp-fig svg { display: block; width: 100%; height: auto; }
+.gp-fig-tag {
+  position: absolute;
+  top: 16px; left: 18px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(241,234,224,0.85);
+  z-index: 2;
+}
+.gp-fig-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+.gp-fig-stat { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); }
+.gp-fig-stat .cell { padding: 18px 20px; border-right: 1px solid var(--rule); }
+.gp-fig-stat .cell:last-child { border-right: none; }
+.gp-fig-stat .num { font-size: 30px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.gp-fig-stat .num .u { font-size: 14px; color: var(--mute); font-weight: 500; }
+.gp-fig-stat .lbl { margin-top: 8px; font-size: 11px; line-height: 1.35; color: var(--mute); text-wrap: pretty; }
+
+/* ==========================================================================
+   Problem — why one-off replacements cost more (cost-leak list)
+   ========================================================================== */
+.leak-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+.leak {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 24px 28px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.leak .n {
+  font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.12em; color: var(--red);
+  flex: none; padding-top: 2px;
+}
+.leak h4 { font-size: 18px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
+.leak p { margin-top: 6px; font-size: 14px; line-height: 1.5; color: var(--ink-soft); text-wrap: pretty; }
+.leak-note {
+  margin-top: 26px;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  max-width: 820px;
+  text-wrap: pretty;
+}
+.leak-note .it { color: var(--red); }
+
+/* ==========================================================================
+   Who this is for — audience cards
+   ========================================================================== */
+.aud-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.aud-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  padding: 26px 24px 28px;
+  display: flex; flex-direction: column;
+}
+.aud-icon { width: 34px; height: 34px; color: var(--red); margin-bottom: 20px; }
+.aud-icon svg { width: 100%; height: 100%; }
+.aud-card h4 { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; }
+.aud-card h4 .it { color: var(--ink); }
+.aud-card p { margin-top: 12px; font-size: 14px; line-height: 1.55; color: var(--ink-soft); text-wrap: pretty; }
+
+/* ==========================================================================
+   Tier table
+   ========================================================================== */
+.tiers { border: 1px solid var(--rule); border-radius: var(--card-radius); overflow: hidden; background: var(--card-bg); }
+.tier-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1fr 1.6fr;
+  border-bottom: 1px solid var(--rule);
+}
+.tier-row:last-child { border-bottom: none; }
+.tier-row.tier-head > div {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mute);
+  padding: 16px 26px;
+  background: var(--cream-soft);
+}
+.tier-row > div { padding: 26px; border-right: 1px solid var(--rule); }
+.tier-row > div:last-child { border-right: none; }
+.tier-units { display: flex; align-items: baseline; gap: 8px; }
+.tier-units .big { font-size: 32px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.tier-units .u { font-size: 13px; color: var(--mute); font-family: var(--font-mono); letter-spacing: 0.08em; }
+.tier-level { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; display: flex; align-items: center; }
+.tier-best { font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); display: flex; align-items: center; text-wrap: pretty; }
+.tier-row.featured { background: rgba(217,138,43,0.08); }
+.tier-row.featured .tier-level { color: var(--red); }
+.tier-badge {
+  display: inline-block; margin-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cream); background: var(--red);
+  padding: 3px 7px; border-radius: 4px; vertical-align: middle;
+}
+.tier-disclaimer {
+  margin-top: 20px;
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 13.5px; line-height: 1.55; color: var(--mute);
+  max-width: 720px; text-wrap: pretty;
+}
+.tier-disclaimer .ic { color: var(--amber); flex: none; font-weight: 700; }
+
+/* ==========================================================================
+   Benefits — reuses .why-grid look but 3x2 with icons
+   ========================================================================== */
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+.benefit {
+  padding: 30px 28px 34px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.benefit-icon { width: 30px; height: 30px; color: var(--red); margin-bottom: 18px; }
+.benefit-icon svg { width: 100%; height: 100%; }
+.benefit h4 { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; }
+.benefit h4 .it { color: var(--ink); }
+.benefit p { margin-top: 12px; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); text-wrap: pretty; }
+
+/* ==========================================================================
+   5-step process (dark band)
+   ========================================================================== */
+.gp-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid rgba(241,234,224,0.18);
+}
+.gp-step {
+  padding: 30px 22px 8px;
+  border-right: 1px solid rgba(241,234,224,0.14);
+  position: relative;
+}
+.gp-step:last-child { border-right: none; }
+.gp-step .sn {
+  font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.16em; color: var(--amber);
+  margin-bottom: 22px;
+}
+.gp-step h4 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: var(--cream); }
+.gp-step h4 .it { color: var(--amber); }
+.gp-step p { margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: rgba(241,234,224,0.72); text-wrap: pretty; }
+
+/* ==========================================================================
+   Organizer toolkit
+   ========================================================================== */
+.toolkit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.tool {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  padding: 24px 24px 26px;
+  display: flex; flex-direction: column;
+}
+.tool-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.tool-icon { width: 26px; height: 26px; color: var(--red); }
+.tool-icon svg { width: 100%; height: 100%; }
+.tool-flag {
+  font-family: var(--font-mono);
+  font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: 4px;
+}
+.tool-flag.open { color: #1d6b39; background: rgba(44,138,74,0.14); }
+.tool-flag.req { color: var(--mute); background: var(--cream-soft); }
+.tool h4 { font-size: 17px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
+.tool p { margin-top: 8px; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); text-wrap: pretty; }
+.toolkit-foot {
+  margin-top: 22px;
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 13.5px; line-height: 1.55; color: var(--mute);
+  max-width: 760px; text-wrap: pretty;
+}
+.toolkit-foot .ic { color: var(--amber); flex: none; font-weight: 700; }
+
+/* ==========================================================================
+   Building-specific landing pages (feature + browser mock)
+   ========================================================================== */
+.bspec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.bspec h3 { font-size: clamp(28px, 3.4vw, 44px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.04; }
+.bspec h3 .it { color: var(--red); }
+.bspec > p { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 460px; text-wrap: pretty; }
+.bspec-list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+.bspec-list li {
+  position: relative; padding-left: 22px;
+  font-size: 14px; line-height: 1.4; color: var(--ink-soft);
+}
+.bspec-list li::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--red); font-size: 13px; }
+
+.browser {
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px -28px rgba(27,25,22,0.5);
+}
+.browser-bar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 16px;
+  background: #2a2620;
+  border-bottom: 1px solid rgba(241,234,224,0.1);
+}
+.browser-dots { display: flex; gap: 7px; }
+.browser-dots span { width: 11px; height: 11px; border-radius: 50%; background: rgba(241,234,224,0.25); }
+.browser-url {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.02em;
+  color: rgba(241,234,224,0.7);
+  background: rgba(0,0,0,0.25);
+  padding: 7px 12px; border-radius: 6px;
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.browser-url .seg { color: var(--amber); }
+.browser-body { background: var(--cream); padding: 28px 26px 30px; }
+.browser-body .b-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute);
+}
+.browser-body .b-title { margin-top: 10px; font-size: 26px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.04; }
+.browser-body .b-title .it { color: var(--red); font-style: italic; }
+.browser-body .b-meta {
+  margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;
+}
+.browser-body .b-chip {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-soft); background: var(--cream-soft);
+  border: 1px solid var(--rule);
+  padding: 6px 10px; border-radius: 5px;
+}
+.browser-foot {
+  margin-top: 22px; padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 16px;
+}
+.qr {
+  width: 64px; height: 64px; flex: none;
+  border-radius: 6px; overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.qr svg { display: block; width: 100%; height: 100%; }
+.browser-foot .qr-cap { font-size: 13px; line-height: 1.4; color: var(--ink-soft); }
+.browser-foot .qr-cap b { display: block; color: var(--ink); font-weight: 600; }
+
+/* ==========================================================================
+   Eligibility — good fit / not ideal
+   ========================================================================== */
+.elig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.elig {
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  padding: 30px 30px 34px;
+  background: var(--card-bg);
+}
+.elig.fit { border-color: rgba(44,138,74,0.4); }
+.elig-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.elig-mark {
+  width: 30px; height: 30px; border-radius: 7px; flex: none;
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 16px;
+}
+.elig.fit .elig-mark { background: rgba(44,138,74,0.14); color: #1d6b39; }
+.elig.nofit .elig-mark { background: var(--cream-soft); color: var(--mute); }
+.elig-head h3 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+.elig ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 13px; }
+.elig li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.45; color: var(--ink-soft); }
+.elig li::before {
+  position: absolute; left: 0; top: -1px;
+  font-size: 14px; font-weight: 700;
+}
+.elig.fit li::before { content: "✓"; color: #2C8A4A; }
+.elig.nofit li::before { content: "✕"; color: var(--mute); }
+
+/* ==========================================================================
+   Strata coordination — split with checklist
+   ========================================================================== */
+.strata-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.strata-grid h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.02; color: var(--cream); }
+.strata-grid h2 .it { color: var(--amber); }
+.strata-grid > div > p { margin-top: 24px; font-size: 16px; line-height: 1.6; color: rgba(241,234,224,0.72); max-width: 440px; text-wrap: pretty; }
+.strata-points {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-left: 1px solid rgba(241,234,224,0.18);
+  border-top: 1px solid rgba(241,234,224,0.18);
+}
+.strata-point {
+  padding: 22px 24px;
+  border-right: 1px solid rgba(241,234,224,0.18);
+  border-bottom: 1px solid rgba(241,234,224,0.18);
+}
+.strata-point .ic { width: 22px; height: 22px; color: var(--amber); margin-bottom: 14px; }
+.strata-point .ic svg { width: 100%; height: 100%; }
+.strata-point b { display: block; font-size: 15px; font-weight: 600; color: var(--cream); letter-spacing: -0.01em; }
+.strata-point span { display: block; margin-top: 6px; font-size: 13px; line-height: 1.45; color: rgba(241,234,224,0.62); }
+
+/* ==========================================================================
+   Trust band
+   ========================================================================== */
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.trust-grid h2 { font-size: clamp(30px, 3.6vw, 46px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.04; }
+.trust-grid h2 .it { color: var(--ink); }
+.trust-grid > div > p { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 440px; text-wrap: pretty; }
+.trust-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.trust-points li {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 15px; line-height: 1.45; color: var(--ink-soft);
+}
+.trust-points li:first-child { border-top: 1px solid var(--rule); }
+.trust-points .check { color: var(--red); font-weight: 700; flex: none; }
+
+/* areas chips */
+.area-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.area-chips span {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.08em;
+  color: var(--ink-soft); background: var(--cream-soft);
+  border: 1px solid var(--rule);
+  padding: 7px 11px; border-radius: 5px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  .gp-hero-grid { grid-template-columns: 1fr; }
+  .gp-fig { max-width: 520px; }
+  .aud-grid { grid-template-columns: 1fr 1fr; }
+  .benefit-grid { grid-template-columns: 1fr 1fr; }
+  .gp-steps { grid-template-columns: 1fr 1fr; }
+  .gp-step { border-bottom: 1px solid rgba(241,234,224,0.14); }
+  .toolkit-grid { grid-template-columns: 1fr 1fr; }
+  .bspec-grid { grid-template-columns: 1fr; }
+  .strata-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .strata-points { max-width: 520px; }
+}
+
+@media (max-width: 660px) {
+  .leak-grid { grid-template-columns: 1fr; }
+  .leak:nth-child(odd) { border-right: 1px solid var(--rule); }
+  .aud-grid { grid-template-columns: 1fr; }
+  .benefit-grid { grid-template-columns: 1fr; }
+  .gp-steps { grid-template-columns: 1fr; }
+  .toolkit-grid { grid-template-columns: 1fr; }
+  .bspec-list { grid-template-columns: 1fr; }
+  .elig-grid { grid-template-columns: 1fr; }
+  .strata-points { grid-template-columns: 1fr; }
+  .tier-row { grid-template-columns: 1fr; }
+  .tier-row > div { border-right: none; border-bottom: 1px solid var(--rule); }
+  .tier-row > div:last-child { border-bottom: none; }
+  .tier-row.tier-head { display: none; }
+  .gp-fig-stat { grid-template-columns: 1fr; }
+  .gp-fig-stat .cell { border-right: none; border-bottom: 1px solid var(--rule); }
+}
