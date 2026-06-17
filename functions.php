@@ -223,6 +223,7 @@ add_action( 'wp', function() {
 // ADD YOUR CUSTOM PHP CODE DOWN BELOW /////////////////////////
 
 require_once get_stylesheet_directory() . '/inc/product-fields.php';
+require_once get_stylesheet_directory() . '/inc/service-fields.php';
 
 // Skip GTM on local environments (for example: mysite.local).
 function wcg_should_load_gtm() {
