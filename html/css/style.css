@@ -506,6 +506,113 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ==========================================================================
+   Homepage group pricing promo
+   ========================================================================== */
+.home-group-buy-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: stretch;
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.home-group-buy-media {
+  position: relative;
+  min-height: clamp(300px, 34vw, 520px);
+  background: var(--earth3);
+}
+
+.home-group-buy-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(27,25,22,0.06), rgba(27,25,22,0.42));
+  pointer-events: none;
+}
+
+.home-group-buy-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-group-buy-badge {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  z-index: 1;
+  display: inline-flex;
+  padding: 8px 10px;
+  border: 1px solid rgba(241,234,224,0.28);
+  border-radius: 4px;
+  background: rgba(27,25,22,0.72);
+  color: var(--cream);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.home-group-buy-copy {
+  padding: clamp(28px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-group-buy-copy .section-title {
+  margin-top: 16px;
+  max-width: 640px;
+}
+
+.home-group-buy-copy p:not(.kicker) {
+  margin-top: 22px;
+  max-width: 620px;
+  font-size: clamp(16px, 1.45vw, 18px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.home-group-buy-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.home-group-buy-points span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(110,90,69,0.24);
+  border-radius: 4px;
+  color: var(--ink);
+  background: rgba(249,246,243,0.72);
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.home-group-buy-points span::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex: none;
+}
+
+.home-group-buy-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 22px;
+  margin-top: 34px;
+}
+
+/* ==========================================================================
    About page
    ========================================================================== */
 .about-hero-copy {
@@ -969,6 +1076,8 @@ a { color: inherit; text-decoration: none; }
   .process-step:nth-child(2n) { padding-right: 24px; }
   .process-step:last-child { padding-right: 24px; }
   .about-help-strip { flex-direction: column; align-items: flex-start; }
+  .home-group-buy-panel { grid-template-columns: 1fr; }
+  .home-group-buy-media { min-height: clamp(260px, 52vw, 420px); }
 }
 
 /* Why-us rows stack */
@@ -983,6 +1092,7 @@ a { color: inherit; text-decoration: none; }
   .about-panel h3,
   .about-help-strip h3,
   .about-client-card h3 { font-size: 24px; }
+  .home-group-buy-actions { align-items: flex-start; flex-direction: column; }
   .contact-form-card { padding: 20px; }
   .contact-intro { margin-top: 18px; }
 }
